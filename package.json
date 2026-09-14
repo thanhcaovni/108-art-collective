@@ -1,0 +1,16 @@
+{
+  "name": "108-art-collective",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "15.5.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.542.0"
+  }
+}
