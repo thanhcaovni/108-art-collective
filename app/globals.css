@@ -1,296 +1,261 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap");
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
-body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#000;
-  color:white;
-  font-family:"Cormorant Garamond",serif;
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: "Cormorant Garamond", serif;
 }
 
-.hero-screen{
-  position:relative;
-  width:100vw;
-  height:100svh;
-  overflow:hidden;
-  background:#000;
+body {
+  min-height: 100svh;
 }
 
-/* ---------- HERO IMAGES ---------- */
-
-.hero-desktop,
-.hero-tablet,
-.hero-mobile{
-  position:absolute;
-  inset:0;
+main {
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #000;
 }
 
-.hero-image{
-  object-fit:cover;
-  object-position:center;
+.hero-screen {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #000;
 }
 
-.hero-tablet,
-.hero-mobile{
-  display:none;
+.hero-image {
+  object-fit: cover;
+  object-position: center center;
 }
 
-/* ---------- OVERLAY ---------- */
-
-.hero-vignette{
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle,transparent 35%,rgba(0,0,0,.72) 100%);
-  z-index:1;
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 35%,
+    rgba(0, 0, 0, 0.72) 100%
+  );
 }
 
-/* ---------- HEADER ---------- */
-
-.hero-header{
-  position:absolute;
-  top:28px;
-  left:32px;
-  right:32px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:10;
+.hero-header {
+  position: absolute;
+  top: max(24px, env(safe-area-inset-top));
+  left: max(24px, env(safe-area-inset-left));
+  right: max(24px, env(safe-area-inset-right));
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.hero-brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.hero-brand span{
-  font-family:"Cinzel",serif;
-  font-size:12px;
-  letter-spacing:.35em;
+.hero-brand span {
+  font-family: "Cinzel", serif;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  white-space: nowrap;
 }
 
-.hero-nav{
-  display:flex;
-  gap:34px;
-  font-family:"Cinzel",serif;
-  font-size:11px;
-  letter-spacing:.28em;
+.hero-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
 }
 
-.hero-nav a{
-  opacity:.8;
-  cursor:pointer;
+.hero-nav a {
+  color: #fff;
+  opacity: 0.82;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.hero-nav a:hover{
-  color:#B31122;
+.hero-nav a:hover {
+  color: #b31122;
+  opacity: 1;
 }
 
-.hero-lang{
-  font-family:"Cinzel",serif;
-  font-size:11px;
-  letter-spacing:.28em;
+.hero-lang {
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  white-space: nowrap;
 }
 
-.hero-menu{
-  display:none;
-  width:34px;
-  height:28px;
-  border:none;
-  background:none;
-  flex-direction:column;
-  justify-content:space-between;
+.hero-menu {
+  display: none;
+  width: 34px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-.hero-menu span{
-  display:block;
-  height:2px;
-  background:white;
+.hero-menu span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
 }
 
-/* ---------- COPY ---------- */
-
-.hero-copy{
-  position:absolute;
-  left:50%;
-  bottom:18vh;
-  transform:translateX(-50%);
-  text-align:center;
-  z-index:10;
+.hero-copy {
+  position: absolute;
+  left: 50%;
+  bottom: 18vh;
+  z-index: 10;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
-.hero-sub{
-  font-family:"Cinzel",serif;
-  font-size:12px;
-  color:#B31122;
-  letter-spacing:.5em;
-  margin-bottom:18px;
+.hero-sub {
+  font-family: "Cinzel", serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: #b31122;
+  margin-bottom: 18px;
 }
 
-.hero-copy h1{
-  font-family:"Cinzel",serif;
-  font-size:30px;
-  letter-spacing:.4em;
+.hero-copy h1 {
+  font-family: "Cinzel", serif;
+  font-size: 30px;
+  letter-spacing: 0.4em;
 }
 
-.hero-desc{
-  margin-top:18px;
-  font-size:12px;
-  letter-spacing:.35em;
+.hero-desc {
+  margin-top: 18px;
+  font-size: 12px;
+  letter-spacing: 0.35em;
 }
 
-/* ---------- FOOTER ---------- */
-
-.hero-footer{
-  position:absolute;
-  left:32px;
-  right:32px;
-  bottom:28px;
-  display:flex;
-  align-items:center;
-  gap:18px;
-  z-index:10;
-  font-family:"Cinzel",serif;
-  font-size:10px;
-  letter-spacing:.3em;
+.hero-footer {
+  position: absolute;
+  left: max(24px, env(safe-area-inset-left));
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: "Cinzel", serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
 }
 
-.hero-line{
-  flex:1;
-  height:1px;
-  background:rgba(255,255,255,.35);
+.hero-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
 }
 
-/* ===================================================== */
-/* TABLET PORTRAIT (iPad dựng dọc) */
-/* ===================================================== */
+/* =========================================================
+   TABLET PORTRAIT
+   ========================================================= */
 
-@media screen and (orientation:portrait) and (min-width:768px){
-
-  .hero-desktop{
-    display:none;
-  }
-
-  .hero-tablet{
-    display:block;
-  }
-
-  .hero-mobile{
-    display:none;
+@media screen and (orientation: portrait) and (min-width: 768px) {
+  .hero-screen {
+    height: 100svh;
   }
 
   .hero-nav,
-  .hero-lang{
-    display:none;
+  .hero-lang {
+    display: none;
   }
 
-  .hero-menu{
-    display:flex;
+  .hero-menu {
+    display: flex;
   }
 
-  .hero-header{
-    left:24px;
-    right:24px;
-    top:24px;
+  .hero-header {
+    top: max(22px, env(safe-area-inset-top));
+    left: max(24px, env(safe-area-inset-left));
+    right: max(24px, env(safe-area-inset-right));
   }
 
-  .hero-copy{
-    width:90%;
-    bottom:12vh;
-  }
-
-  .hero-copy h1{
-    font-size:22px;
-    line-height:1.5;
-    letter-spacing:.28em;
-  }
-
-  .hero-sub{
-    font-size:11px;
-  }
-
-  .hero-desc{
-    font-size:11px;
-  }
-
-  .hero-footer{
-    left:24px;
-    right:24px;
-    font-size:9px;
+  .hero-copy,
+  .hero-footer {
+    display: none;
   }
 }
 
-/* ===================================================== */
-/* MOBILE PORTRAIT */
-/* ===================================================== */
+/* =========================================================
+   MOBILE PORTRAIT
+   ========================================================= */
 
-@media screen and (orientation:portrait) and (max-width:767px){
-
-  .hero-desktop,
-  .hero-tablet{
-    display:none;
-  }
-
-  .hero-mobile{
-    display:block;
+@media screen and (orientation: portrait) and (max-width: 767px) {
+  .hero-screen {
+    height: 100svh;
   }
 
   .hero-nav,
-  .hero-lang{
-    display:none;
+  .hero-lang {
+    display: none;
   }
 
-  .hero-menu{
-    display:flex;
+  .hero-menu {
+    display: flex;
   }
 
-  .hero-header{
-    left:18px;
-    right:18px;
-    top:18px;
+  .hero-header {
+    top: max(16px, env(safe-area-inset-top));
+    left: max(18px, env(safe-area-inset-left));
+    right: max(18px, env(safe-area-inset-right));
   }
 
-  .hero-brand img{
-    width:34px;
-    height:34px;
+  .hero-brand {
+    gap: 10px;
   }
 
-  .hero-brand span{
-    font-size:10px;
-    letter-spacing:.22em;
+  .hero-brand span {
+    font-size: 10px;
+    letter-spacing: 0.22em;
   }
 
-  .hero-copy{
-    width:92%;
-    bottom:10vh;
+  .hero-copy,
+  .hero-footer {
+    display: none;
+  }
+}
+
+/* =========================================================
+   LANDSCAPE
+   ========================================================= */
+
+@media screen and (orientation: landscape) {
+  .hero-menu {
+    display: none;
   }
 
-  .hero-copy h1{
-    font-size:18px;
-    line-height:1.6;
-    letter-spacing:.2em;
+  .hero-nav {
+    display: flex;
   }
 
-  .hero-sub{
-    font-size:10px;
-  }
-
-  .hero-desc{
-    font-size:10px;
-    letter-spacing:.25em;
-  }
-
-  .hero-footer{
-    left:20px;
-    right:20px;
-    font-size:8px;
+  .hero-lang {
+    display: block;
   }
 }
