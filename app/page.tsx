@@ -1,15 +1,14 @@
-import Image from "next/image";
+{"use client";
+
+import Intro from "@/components/Intro";
+import Hero from "@/components/Hero";
 
 export default function Page() {
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-black">
-      <Image
-        src="/hero-108.jpg"
-        alt="108 Art Collective"
-        fill
-        priority
-        className="object-cover object-center"
-      />
+      <Intro />
+      <Hero />
     </main>
   );
 }
+"}
