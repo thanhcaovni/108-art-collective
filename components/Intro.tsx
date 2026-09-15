@@ -1,9 +1,5 @@
-import Hero from "@/components/Hero";
+"use client";
 
-export default function Home() {
-  return (
-    <main className="bg-black">
-      <Hero />
-    </main>
-  );
+export default function Intro() {
+  return null;
 }
