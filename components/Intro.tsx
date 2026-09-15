@@ -1,43 +1,33 @@
-{"use client";
+"use client";
 
-import Image from \"next/image\";
-import { useEffect, useState } from \"react\";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Intro() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 3800);
+    const timer = setTimeout(() => setVisible(false), 2600);
     return () => clearTimeout(timer);
   }, []);
 
   if (!visible) return null;
 
   return (
-    <section className=\"fixed inset-0 z-[9999] flex items-center justify-center bg-black intro-screen\">
-      <div className=\"intro-smoke\" />
+    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black transition-opacity duration-700">
+      <div className="flex flex-col items-center gap-6 animate-pulse">
+        <Image
+          src="/logo108-red.png"
+          alt="108 Logo"
+          width={140}
+          height={140}
+          priority
+        />
 
-      <Image
-        src=\"/seal-108.png\"
-        alt=\"108 Seal\"
-        width={170}
-        height={170}
-        priority
-        className=\"intro-seal\"
-      />
-
-      <div className=\"intro-text\">
-        <p className=\"intro-cn\">天地人</p>
-
-        <h1>108 ART COLLECTIVE</h1>
-
-        <p className=\"intro-tagline\">
+        <p className="tracking-[0.45em] text-sm text-neutral-300 text-center">
           FROM NOTHING TO INFINITE
         </p>
-
-        <span>ART · PEOPLE · CULTURE</span>
       </div>
-    </section>
+    </div>
   );
 }
-"}
