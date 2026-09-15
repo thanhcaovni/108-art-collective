@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import MusicPlayer from "@/components/MusicPlayer";
+import MusicPlayer from "../components/MusicPlayer";
 
 export const metadata: Metadata = {
   title: "108 Art Collective",
