@@ -12,28 +12,30 @@
   box-sizing: border-box;
 }
 
-html {
-  width: 100%;
-  height: 100%;
-  background: #000;
-  overflow: hidden;
-}
-
+html,
 body {
   width: 100%;
+  height: 100%;
   min-height: 100dvh;
   background: #000;
   color: #fff;
-  font-family: "Cormorant Garamond", serif;
   overflow-x: hidden;
   overflow-y: hidden;
+  font-family: "Cormorant Garamond", serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
 }
 
 main {
-  width: 100vw;
+  width: 100%;
+  height: 100dvh;
   min-height: 100dvh;
   background: #000;
   overflow: hidden;
+  position: relative;
 }
 
 /* =========================================================
@@ -42,8 +44,9 @@ main {
 
 .hero-screen {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100dvh;
+  min-height: 100dvh;
   overflow: hidden;
   background: #000;
 }
@@ -54,8 +57,6 @@ main {
   user-select: none;
   -webkit-user-drag: none;
 }
-
-/* Overlay tối nhẹ */
 
 .hero-vignette {
   position: absolute;
@@ -301,16 +302,39 @@ main {
 }
 
 /* =========================================================
-   SAFARI / IOS FIX
+   SAFARI / IOS FIX (PRODUCTION PATCH)
    ========================================================= */
+
+/* KHÔNG dùng max-width:none — gây lỗi Safari chỉ hiện 1 góc ảnh */
 
 img {
   display: block;
-  max-width: none;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 picture {
   display: block;
-  width: 100%;
-  height: 100%;
+}
+
+/* Next.js Image fix */
+
+.hero-screen span,
+.hero-screen img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Safari viewport fix */
+
+@supports (-webkit-touch-callout: none) {
+  html,
+  body,
+  main,
+  .hero-screen {
+    height: -webkit-fill-available;
+    min-height: 100dvh;
+  }
 }
