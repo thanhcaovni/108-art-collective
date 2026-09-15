@@ -1,15 +1,9 @@
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <main className="relative h-screen w-screen overflow-hidden bg-black">
-      <Image
-        src="/hero-108.jpg"
-        alt="108 Art Collective"
-        fill
-        priority
-        className="object-cover object-center"
-      />
-    </main>
-  );
-}
+<Image
+  src="/hero-108.jpg"
+  alt="108 Art Collective"
+  fill
+  priority
+  className="object-cover object-center"
+/>
