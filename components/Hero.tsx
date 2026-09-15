@@ -7,18 +7,15 @@ import HeroMobile from "./HeroMobile";
 export default function Hero() {
   return (
     <>
-      {/* Desktop từ 1280px trở lên */}
-      <div className="hidden xl:block">
+      <div className="hero-desktop">
         <HeroDesktop />
       </div>
 
-      {/* Tablet từ 768 đến 1279px */}
-      <div className="hidden md:block xl:hidden">
+      <div className="hero-tablet">
         <HeroTablet />
       </div>
 
-      {/* Mobile dưới 768px */}
-      <div className="block md:hidden">
+      <div className="hero-mobile">
         <HeroMobile />
       </div>
     </>
