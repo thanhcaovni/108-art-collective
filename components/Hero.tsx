@@ -1,4 +1,4 @@
-{"use client";
+"use client";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -11,13 +11,20 @@ export default function Hero() {
       const portrait = window.matchMedia("(orientation: portrait)").matches;
       const width = window.innerWidth;
 
+      // Landscape (desktop + iPad ngang)
       if (!portrait) {
         setHeroSrc("/hero-108.jpg");
-      } else if (width >= 768) {
-        setHeroSrc("/hero-108-tablet.png");
-      } else {
-        setHeroSrc("/hero-108-mobile.png");
+        return;
       }
+
+      // Portrait tablet
+      if (width >= 768) {
+        setHeroSrc("/hero-108-tablet.png");
+        return;
+      }
+
+      // Portrait mobile
+      setHeroSrc("/hero-108-mobile.png");
     };
 
     updateHero();
@@ -32,7 +39,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen w-screen overflow-hidden bg-black">
+    <section className="hero-screen">
       <Image
         key={heroSrc}
         src={heroSrc}
@@ -40,9 +47,60 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className="hero-image"
       />
+
+      <div className="hero-vignette" />
+
+      {/* Header */}
+      <header className="hero-header">
+        <div className="hero-brand">
+          <Image
+            src="/logo108-red.png"
+            alt="108"
+            width={42}
+            height={42}
+            priority
+          />
+          <span>108 ART COLLECTIVE</span>
+        </div>
+
+        <nav className="hero-nav">
+          <a>ARTISTS</a>
+          <a>INSTITUTE</a>
+          <a>EVENTS</a>
+          <a>STORE</a>
+          <a>JOURNAL</a>
+          <a>CONTACT</a>
+        </nav>
+
+        <div className="hero-lang">VN / EN</div>
+      </header>
+
+      {/* Tablet + Mobile Hamburger */}
+      <button className="hero-hamburger">
+        <span />
+        <span />
+        <span />
+      </button>
+
+      {/* Center Copy */}
+      <div className="hero-copy">
+        <p className="hero-sub">FROM NOTHING TO INFINITE</p>
+
+        <h1>108 ART COLLECTIVE</h1>
+
+        <p className="hero-desc">ART · PEOPLE · CULTURE</p>
+      </div>
+
+      {/* Footer */}
+      <footer className="hero-footer">
+        <span>HOẠ HỘI 108</span>
+
+        <span className="hero-line" />
+
+        <span>EST. 2026 — SAIGON</span>
+      </footer>
     </section>
   );
 }
-"}
