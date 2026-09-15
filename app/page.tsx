@@ -1,10 +1,8 @@
-import Hero from "../components/Hero";
-import Intro from "../components/Intro";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <main className="bg-black min-h-svh overflow-hidden">
-      <Intro />
+    <main className="bg-black">
       <Hero />
     </main>
   );
