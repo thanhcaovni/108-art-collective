@@ -1,97 +1,51 @@
+"use client";
+
 import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="hero-screen">
+    <section className="relative h-svh w-full overflow-hidden bg-black">
 
-      {/* DESKTOP / LANDSCAPE */}
-      <div className="hero-desktop">
+      {/* ========================= */}
+      {/* HERO BACKGROUND IMAGES    */}
+      {/* ========================= */}
+
+      {/* Desktop / Landscape */}
+      <div className="absolute inset-0 hidden xl:block">
         <Image
           src="/hero-108.jpg"
-          alt="108 Art Collective"
+          alt="108 Art Collective Hero Desktop"
           fill
           priority
-          sizes="100vw"
-          className="hero-image"
+          className="object-cover object-center"
         />
       </div>
 
-      {/* TABLET PORTRAIT */}
-      <div className="hero-tablet">
+      {/* Tablet Portrait */}
+      <div className="absolute inset-0 hidden md:block xl:hidden portrait:block landscape:hidden">
         <Image
           src="/hero-108-tablet.png"
-          alt="108 Tablet"
+          alt="108 Art Collective Hero Tablet"
           fill
           priority
-          sizes="100vw"
-          className="hero-image"
+          className="object-cover object-center"
         />
       </div>
 
-      {/* MOBILE PORTRAIT */}
-      <div className="hero-mobile">
+      {/* Mobile Portrait */}
+      <div className="absolute inset-0 block md:hidden portrait:block landscape:hidden">
         <Image
           src="/hero-108-mobile.png"
-          alt="108 Mobile"
+          alt="108 Art Collective Hero Mobile"
           fill
           priority
-          sizes="100vw"
-          className="hero-image"
+          className="object-cover object-center"
         />
       </div>
 
-      {/* Overlay */}
-      <div className="hero-vignette" />
+{/* ===== Overlay tối nhẹ để đồng bộ toàn bộ hero ===== */}
 
-      {/* Header */}
-      <header className="hero-header">
-        <div className="hero-brand">
-          <Image
-            src="/logo108-red.png"
-            alt="108 Logo"
-            width={42}
-            height={42}
-            priority
-          />
+      <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
-          <span>108 ART COLLECTIVE</span>
-        </div>
-
-        <nav className="hero-nav">
-          <a>ARTISTS</a>
-          <a>INSTITUTE</a>
-          <a>EVENTS</a>
-          <a>STORE</a>
-          <a>JOURNAL</a>
-          <a>CONTACT</a>
-        </nav>
-
-        <div className="hero-lang">VN / EN</div>
-
-        <button className="hero-menu">
-          <span />
-          <span />
-          <span />
-        </button>
-      </header>
-
-      {/* Copy */}
-      <div className="hero-copy">
-        <p className="hero-sub">FROM NOTHING TO INFINITE</p>
-
-        <h1>108 ART COLLECTIVE</h1>
-
-        <p className="hero-desc">ART · PEOPLE · CULTURE</p>
-      </div>
-
-      {/* Footer */}
-      <footer className="hero-footer">
-        <span>HOẠ HỘI 108</span>
-
-        <div className="hero-line" />
-
-        <span>EST. 2026 — SAIGON</span>
-      </footer>
     </section>
   );
-}
