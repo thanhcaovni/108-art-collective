@@ -1,5 +1,5 @@
-{"import Intro from \"@/components/Intro\";
-import Hero from \"@/components/Hero\";
+import Intro from "@/components/Intro";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
@@ -9,4 +9,3 @@ export default function Home() {
     </>
   );
 }
-"}
