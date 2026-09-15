@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap");
 
 /* =========================================================
-   RESET
+   RESET — PRODUCTION V2
    ========================================================= */
 
 *,
@@ -12,30 +12,36 @@
   box-sizing: border-box;
 }
 
+:root {
+  --vh: 100svh;
+}
+
 html,
 body {
   width: 100%;
   height: 100%;
-  min-height: 100dvh;
+  min-height: var(--vh);
   background: #000;
   color: #fff;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: clip;
+  overscroll-behavior: none;
   font-family: "Cormorant Garamond", serif;
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   position: relative;
+  touch-action: pan-x pan-y;
 }
 
 main {
-  width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  background: #000;
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: var(--vh);
+  min-height: var(--vh);
+  overflow: clip;
+  background: #000;
 }
 
 /* =========================================================
@@ -43,11 +49,12 @@ main {
    ========================================================= */
 
 .hero-screen {
-  position: relative;
+  position: fixed;
+  inset: 0;
   width: 100%;
-  height: 100dvh;
-  min-height: 100dvh;
-  overflow: hidden;
+  height: var(--vh);
+  min-height: var(--vh);
+  overflow: clip;
   background: #000;
 }
 
@@ -56,6 +63,7 @@ main {
   object-position: center center;
   user-select: none;
   -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 .hero-vignette {
@@ -103,7 +111,6 @@ main {
   display: flex;
   align-items: center;
   gap: 34px;
-
   font-family: "Cinzel", serif;
   font-size: 11px;
   letter-spacing: 0.28em;
@@ -129,13 +136,10 @@ main {
 
 .hero-menu {
   display: none;
-
   width: 34px;
   height: 28px;
-
   background: transparent;
   border: 0;
-
   flex-direction: column;
   justify-content: space-between;
 }
@@ -162,7 +166,6 @@ main {
 .hero-sub {
   margin-bottom: 18px;
   color: #b31122;
-
   font-family: "Cinzel", serif;
   font-size: 12px;
   letter-spacing: 0.5em;
@@ -189,13 +192,10 @@ main {
   left: max(24px, env(safe-area-inset-left));
   right: max(24px, env(safe-area-inset-right));
   bottom: max(24px, env(safe-area-inset-bottom));
-
   display: flex;
   align-items: center;
   gap: 18px;
-
   z-index: 20;
-
   font-family: "Cinzel", serif;
   font-size: 10px;
   letter-spacing: 0.3em;
@@ -204,14 +204,14 @@ main {
 .hero-line {
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255,255,255,.35);
 }
 
 /* =========================================================
    TABLET PORTRAIT
    ========================================================= */
 
-@media screen and (orientation: portrait) and (min-width: 768px) {
+@media screen and (orientation: portrait) and (min-width:768px) {
 
   .hero-nav,
   .hero-lang {
@@ -228,8 +228,6 @@ main {
     right: max(24px, env(safe-area-inset-right));
   }
 
-  /* Poster tablet đã có text sẵn */
-
   .hero-copy,
   .hero-footer {
     display: none;
@@ -240,7 +238,7 @@ main {
    MOBILE PORTRAIT
    ========================================================= */
 
-@media screen and (orientation: portrait) and (max-width: 767px) {
+@media screen and (orientation: portrait) and (max-width:767px) {
 
   .hero-nav,
   .hero-lang {
@@ -266,8 +264,6 @@ main {
     letter-spacing: 0.22em;
   }
 
-  /* Poster mobile đã có text sẵn */
-
   .hero-copy,
   .hero-footer {
     display: none;
@@ -275,7 +271,7 @@ main {
 }
 
 /* =========================================================
-   LANDSCAPE (Desktop + iPad ngang + Phone ngang)
+   LANDSCAPE
    ========================================================= */
 
 @media screen and (orientation: landscape) {
@@ -302,10 +298,14 @@ main {
 }
 
 /* =========================================================
-   SAFARI / IOS FIX (PRODUCTION PATCH)
+   NEXT IMAGE FIX
    ========================================================= */
 
-/* KHÔNG dùng max-width:none — gây lỗi Safari chỉ hiện 1 góc ảnh */
+.hero-screen > span,
+.hero-screen img {
+  width: 100% !important;
+  height: 100% !important;
+}
 
 img {
   display: block;
@@ -319,22 +319,28 @@ picture {
   display: block;
 }
 
-/* Next.js Image fix */
-
-.hero-screen span,
-.hero-screen img {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Safari viewport fix */
+/* =========================================================
+   SAFARI / IOS FIX
+   ========================================================= */
 
 @supports (-webkit-touch-callout: none) {
+
   html,
   body,
   main,
   .hero-screen {
-    height: -webkit-fill-available;
-    min-height: 100dvh;
+    height: 100svh;
+    min-height: 100svh;
+  }
+
+  body {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+  }
+
+  main {
+    position: fixed;
+    inset: 0;
   }
 }
