@@ -1,23 +1,26 @@
 "use client";
 
-import HeroDesktop from "./HeroDesktop";
-import HeroTablet from "./HeroTablet";
-import HeroMobile from "./HeroMobile";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <>
-      <div className="hero-desktop">
-        <HeroDesktop />
+    <section className="relative w-screen h-screen overflow-hidden bg-black">
+
+      {/* Desktop */}
+      <div className="hidden xl:block absolute inset-0">
+        <Image src="/hero-108.jpg" fill priority alt="108" className="object-cover" />
       </div>
 
-      <div className="hero-tablet">
-        <HeroTablet />
+      {/* Tablet Portrait */}
+      <div className="hidden md:block xl:hidden absolute inset-0">
+        <Image src="/hero-108-tablet.png" fill priority alt="108" className="object-cover" />
       </div>
 
-      <div className="hero-mobile">
-        <HeroMobile />
+      {/* Mobile */}
+      <div className="block md:hidden absolute inset-0">
+        <Image src="/hero-108-mobile.png" fill priority alt="108" className="object-cover" />
       </div>
-    </>
+
+    </section>
   );
 }
