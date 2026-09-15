@@ -1,67 +1,42 @@
-{"use client";
-
-import Intro from "@/components/Intro";
-import Hero from "@/components/Hero";
+import Image from "next/image";
 
 export default function Page() {
   return (
-    <main className="relative h-screen w-screen overflow-hidden bg-black">
-      <Intro />
-      <Hero />
+    <main className="bg-black overflow-hidden">
+
+      {/* ================= DESKTOP / LANDSCAPE ================= */}
+      <section className="hidden xl:block relative h-screen w-screen">
+        <Image
+          src="/hero-108.jpg"
+          alt="108 Art Collective"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+      </section>
+
+      {/* ================= TABLET PORTRAIT ================= */}
+      <section className="hidden md:block xl:hidden relative w-screen h-screen">
+        <Image
+          src="/hero-108-tablet.png"
+          alt="108 Tablet Portrait"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+      </section>
+
+      {/* ================= MOBILE PORTRAIT ================= */}
+      <section className="block md:hidden relative w-screen h-screen">
+        <Image
+          src="/hero-108-mobile.png"
+          alt="108 Mobile Portrait"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+      </section>
+
     </main>
   );
-}
-"}
-/* ===== DEVICE ORIENTATION SWITCH ===== */
-
-.hero-desktop,
-.hero-tablet,
-.hero-mobile {
-  position: absolute;
-  inset: 0;
-}
-
-/* Mặc định desktop */
-.hero-tablet,
-.hero-mobile {
-  display: none;
-}
-
-/* iPad dựng dọc */
-@media screen and (orientation: portrait) and (min-width: 768px) {
-  .hero-desktop {
-    display: none;
-  }
-
-  .hero-tablet {
-    display: block;
-  }
-
-  .hero-mobile {
-    display: none;
-  }
-}
-
-/* Điện thoại dựng dọc */
-@media screen and (orientation: portrait) and (max-width: 767px) {
-  .hero-desktop,
-  .hero-tablet {
-    display: none;
-  }
-
-  .hero-mobile {
-    display: block;
-  }
-}
-
-/* Landscape (desktop + iPad ngang) */
-@media screen and (orientation: landscape) {
-  .hero-desktop {
-    display: block;
-  }
-
-  .hero-tablet,
-  .hero-mobile {
-    display: none;
-  }
 }
