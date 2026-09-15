@@ -10,10 +10,10 @@ html,
 body{
   width:100%;
   height:100%;
-  background:#000;
   overflow:hidden;
-  font-family:"Cormorant Garamond", serif;
+  background:#000;
   color:white;
+  font-family:"Cormorant Garamond",serif;
 }
 
 .hero-screen{
@@ -24,16 +24,35 @@ body{
   background:#000;
 }
 
+/* ---------- HERO IMAGES ---------- */
+
+.hero-desktop,
+.hero-tablet,
+.hero-mobile{
+  position:absolute;
+  inset:0;
+}
+
 .hero-image{
   object-fit:cover;
   object-position:center;
 }
 
+.hero-tablet,
+.hero-mobile{
+  display:none;
+}
+
+/* ---------- OVERLAY ---------- */
+
 .hero-vignette{
   position:absolute;
   inset:0;
-  background:radial-gradient(circle,transparent 40%,rgba(0,0,0,.72) 100%);
+  background:radial-gradient(circle,transparent 35%,rgba(0,0,0,.72) 100%);
+  z-index:1;
 }
+
+/* ---------- HEADER ---------- */
 
 .hero-header{
   position:absolute;
@@ -43,7 +62,7 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  z-index:20;
+  z-index:10;
 }
 
 .hero-brand{
@@ -53,7 +72,7 @@ body{
 }
 
 .hero-brand span{
-  font-family:"Cinzel", serif;
+  font-family:"Cinzel",serif;
   font-size:12px;
   letter-spacing:.35em;
 }
@@ -61,14 +80,14 @@ body{
 .hero-nav{
   display:flex;
   gap:34px;
-  font-family:"Cinzel", serif;
+  font-family:"Cinzel",serif;
   font-size:11px;
   letter-spacing:.28em;
 }
 
 .hero-nav a{
-  cursor:pointer;
   opacity:.8;
+  cursor:pointer;
 }
 
 .hero-nav a:hover{
@@ -76,30 +95,28 @@ body{
 }
 
 .hero-lang{
-  font-family:"Cinzel", serif;
+  font-family:"Cinzel",serif;
   font-size:11px;
-  letter-spacing:.3em;
+  letter-spacing:.28em;
 }
 
-.hero-hamburger{
-  position:absolute;
-  top:30px;
-  right:24px;
-  width:32px;
-  height:28px;
+.hero-menu{
   display:none;
-  background:none;
+  width:34px;
+  height:28px;
   border:none;
-  z-index:25;
+  background:none;
+  flex-direction:column;
+  justify-content:space-between;
 }
 
-.hero-hamburger span{
+.hero-menu span{
   display:block;
-  width:100%;
   height:2px;
-  margin:6px 0;
   background:white;
 }
+
+/* ---------- COPY ---------- */
 
 .hero-copy{
   position:absolute;
@@ -107,40 +124,41 @@ body{
   bottom:18vh;
   transform:translateX(-50%);
   text-align:center;
-  z-index:15;
+  z-index:10;
 }
 
 .hero-sub{
-  font-family:"Cinzel", serif;
+  font-family:"Cinzel",serif;
   font-size:12px;
-  letter-spacing:.55em;
   color:#B31122;
-  margin-bottom:20px;
+  letter-spacing:.5em;
+  margin-bottom:18px;
 }
 
 .hero-copy h1{
-  font-family:"Cinzel", serif;
+  font-family:"Cinzel",serif;
   font-size:30px;
   letter-spacing:.4em;
-  color:white;
 }
 
 .hero-desc{
-  margin-top:20px;
-  letter-spacing:.35em;
+  margin-top:18px;
   font-size:12px;
-  opacity:.85;
+  letter-spacing:.35em;
 }
+
+/* ---------- FOOTER ---------- */
 
 .hero-footer{
   position:absolute;
   left:32px;
   right:32px;
-  bottom:26px;
+  bottom:28px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  font-family:"Cinzel", serif;
+  gap:18px;
+  z-index:10;
+  font-family:"Cinzel",serif;
   font-size:10px;
   letter-spacing:.3em;
 }
@@ -148,39 +166,45 @@ body{
 .hero-line{
   flex:1;
   height:1px;
-  margin:0 18px;
   background:rgba(255,255,255,.35);
 }
 
-/* ---------- TABLET PORTRAIT ---------- */
+/* ===================================================== */
+/* TABLET PORTRAIT (iPad dựng dọc) */
+/* ===================================================== */
 
-@media screen and (orientation: portrait) and (min-width:768px){
+@media screen and (orientation:portrait) and (min-width:768px){
 
-  .hero-screen{
-    height:100svh;
-  }
-
-  .hero-nav{
+  .hero-desktop{
     display:none;
   }
 
-  .hero-hamburger{
+  .hero-tablet{
     display:block;
   }
 
-  .hero-header{
-    top:22px;
-    left:22px;
-    right:22px;
+  .hero-mobile{
+    display:none;
   }
 
-  .hero-brand span{
-    font-size:11px;
+  .hero-nav,
+  .hero-lang{
+    display:none;
+  }
+
+  .hero-menu{
+    display:flex;
+  }
+
+  .hero-header{
+    left:24px;
+    right:24px;
+    top:24px;
   }
 
   .hero-copy{
-    bottom:13vh;
     width:90%;
+    bottom:12vh;
   }
 
   .hero-copy h1{
@@ -197,28 +221,41 @@ body{
     font-size:11px;
   }
 
+  .hero-footer{
+    left:24px;
+    right:24px;
+    font-size:9px;
+  }
 }
 
-/* ---------- MOBILE PORTRAIT ---------- */
+/* ===================================================== */
+/* MOBILE PORTRAIT */
+/* ===================================================== */
 
-@media screen and (orientation: portrait) and (max-width:767px){
+@media screen and (orientation:portrait) and (max-width:767px){
 
-  .hero-screen{
-    height:100svh;
-  }
-
-  .hero-nav{
+  .hero-desktop,
+  .hero-tablet{
     display:none;
   }
 
-  .hero-hamburger{
+  .hero-mobile{
     display:block;
   }
 
+  .hero-nav,
+  .hero-lang{
+    display:none;
+  }
+
+  .hero-menu{
+    display:flex;
+  }
+
   .hero-header{
-    top:18px;
     left:18px;
     right:18px;
+    top:18px;
   }
 
   .hero-brand img{
@@ -233,13 +270,13 @@ body{
 
   .hero-copy{
     width:92%;
-    bottom:11vh;
+    bottom:10vh;
   }
 
   .hero-copy h1{
     font-size:18px;
     line-height:1.6;
-    letter-spacing:.22em;
+    letter-spacing:.2em;
   }
 
   .hero-sub{
@@ -256,19 +293,4 @@ body{
     right:20px;
     font-size:8px;
   }
-
-}
-
-/* ---------- LANDSCAPE ---------- */
-
-@media screen and (orientation: landscape){
-
-  .hero-nav{
-    display:flex;
-  }
-
-  .hero-hamburger{
-    display:none;
-  }
-
 }
