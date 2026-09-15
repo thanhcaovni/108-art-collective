@@ -1,1 +1,38 @@
-{"use client";\n\nimport { useEffect, useRef, useState } from \"react\";\n\nexport default function MusicPlayer() {\n  const audioRef = useRef<HTMLAudioElement>(null);\n  const [playing, setPlaying] = useState(false);\n\n  useEffect(() => {\n    const saved = localStorage.getItem(\"108-music-playing\") === \"true\";\n\n    if (saved && audioRef.current) {\n      audioRef.current.volume = 0.45;\n      audioRef.current.play().catch(() => {});\n      setPlaying(true);\n    }\n  }, []);\n\n  const toggle = async () => {\n    if (!audioRef.current) return;\n\n    if (playing) {\n      audioRef.current.pause();\n      localStorage.setItem(\"108-music-playing\", \"false\");\n      setPlaying(false);\n    } else {\n      audioRef.current.volume = 0.45;\n      await audioRef.current.play();\n      localStorage.setItem(\"108-music-playing\", \"true\");\n      setPlaying(true);\n    }\n  };\n\n  return (\n    <>\n      <audio\n        ref={audioRef}\n        src=\"/music/bonbeuocthe.mp3\"\n        loop\n        preload=\"auto\"\n      />\n\n      <button className=\"archive-radio\" onClick={toggle}>\n        <span className=\"radio-title\">108 ARCHIVE RADIO</span>\n        <span className=\"radio-track\">Bốn Bể Ước Thề</span>\n        <span className=\"radio-button\">{playing ? \"❚❚\" : \"▶\"}</span>\n      </button>\n    </>\n  );\n}\n"}
+"use client";
+
+import { useRef, useState } from "react";
+
+export default function MusicPlayer() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = async () => {
+    if (!audioRef.current) return;
+
+    if (playing) {
+      audioRef.current.pause();
+      setPlaying(false);
+    } else {
+      audioRef.current.volume = 0.45;
+      await audioRef.current.play();
+      setPlaying(true);
+    }
+  };
+
+  return (
+    <>
+      <audio
+        ref={audioRef}
+        src="/music/bonbeuocthe.mp3"
+        loop
+        preload="auto"
+      />
+
+      <button className="archive-radio" onClick={toggle}>
+        <span className="radio-title">108 ARCHIVE RADIO</span>
+        <span className="radio-track">Bốn Bể Ước Thề</span>
+        <span className="radio-button">{playing ? "❚❚" : "▶"}</span>
+      </button>
+    </>
+  );
+}
