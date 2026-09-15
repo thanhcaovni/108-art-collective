@@ -1,37 +1,43 @@
-"use client";
+{"use client";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import Image from \"next/image\";
+import { useEffect, useState } from \"react\";
 
 export default function Intro() {
-  const [hide, setHide] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setHide(true), 3500);
+    const timer = setTimeout(() => setVisible(false), 3800);
     return () => clearTimeout(timer);
   }, []);
 
-  if (hide) return null;
+  if (!visible) return null;
 
   return (
-    <section className="intro-screen">
-      <div className="intro-smoke" />
+    <section className=\"fixed inset-0 z-[9999] flex items-center justify-center bg-black intro-screen\">
+      <div className=\"intro-smoke\" />
 
       <Image
-        src="/seal-108.png"
-        alt="108 Seal"
-        width={160}
-        height={160}
+        src=\"/seal-108.png\"
+        alt=\"108 Seal\"
+        width={170}
+        height={170}
         priority
-        className="seal"
+        className=\"intro-seal\"
       />
 
-      <p className="intro-cn">天地人</p>
+      <div className=\"intro-text\">
+        <p className=\"intro-cn\">天地人</p>
 
-      <h1 className="intro-title">108 ART COLLECTIVE</h1>
+        <h1>108 ART COLLECTIVE</h1>
 
-      <p className="intro-tagline">FROM NOTHING TO INFINITE</p>
+        <p className=\"intro-tagline\">
+          FROM NOTHING TO INFINITE
+        </p>
+
+        <span>ART · PEOPLE · CULTURE</span>
+      </div>
     </section>
   );
 }
-
+"}
