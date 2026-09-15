@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap");
 
 /* =========================================================
-   RESET — PRODUCTION V2
+   108 ART COLLECTIVE — GLOBALS.CSS PRODUCTION V3
    ========================================================= */
+
+/* RESET */
 
 *,
 *::before,
@@ -14,6 +16,7 @@
 
 :root {
   --vh: 100svh;
+  --red108: #b31122;
 }
 
 html,
@@ -125,7 +128,7 @@ main {
 
 .hero-nav a:hover {
   opacity: 1;
-  color: #b31122;
+  color: var(--red108);
 }
 
 .hero-lang {
@@ -151,7 +154,7 @@ main {
 }
 
 /* =========================================================
-   HERO COPY (Desktop only)
+   HERO COPY (LANDSCAPE ONLY)
    ========================================================= */
 
 .hero-copy {
@@ -165,7 +168,7 @@ main {
 
 .hero-sub {
   margin-bottom: 18px;
-  color: #b31122;
+  color: var(--red108);
   font-family: "Cinzel", serif;
   font-size: 12px;
   letter-spacing: 0.5em;
@@ -184,7 +187,7 @@ main {
 }
 
 /* =========================================================
-   FOOTER (Desktop only)
+   FOOTER
    ========================================================= */
 
 .hero-footer {
@@ -192,10 +195,13 @@ main {
   left: max(24px, env(safe-area-inset-left));
   right: max(24px, env(safe-area-inset-right));
   bottom: max(24px, env(safe-area-inset-bottom));
+
   display: flex;
   align-items: center;
   gap: 18px;
+
   z-index: 20;
+
   font-family: "Cinzel", serif;
   font-size: 10px;
   letter-spacing: 0.3em;
@@ -211,26 +217,26 @@ main {
    TABLET PORTRAIT
    ========================================================= */
 
-@media screen and (orientation: portrait) and (min-width:768px) {
+@media screen and (orientation: portrait) and (min-width:768px){
 
   .hero-nav,
-  .hero-lang {
-    display: none;
+  .hero-lang{
+    display:none;
   }
 
-  .hero-menu {
-    display: flex;
+  .hero-menu{
+    display:flex;
   }
 
-  .hero-header {
-    top: max(22px, env(safe-area-inset-top));
-    left: max(24px, env(safe-area-inset-left));
-    right: max(24px, env(safe-area-inset-right));
+  .hero-header{
+    top:max(22px, env(safe-area-inset-top));
+    left:max(24px, env(safe-area-inset-left));
+    right:max(24px, env(safe-area-inset-right));
   }
 
   .hero-copy,
-  .hero-footer {
-    display: none;
+  .hero-footer{
+    display:none;
   }
 }
 
@@ -238,62 +244,62 @@ main {
    MOBILE PORTRAIT
    ========================================================= */
 
-@media screen and (orientation: portrait) and (max-width:767px) {
+@media screen and (orientation: portrait) and (max-width:767px){
 
   .hero-nav,
-  .hero-lang {
-    display: none;
+  .hero-lang{
+    display:none;
   }
 
-  .hero-menu {
-    display: flex;
+  .hero-menu{
+    display:flex;
   }
 
-  .hero-header {
-    top: max(16px, env(safe-area-inset-top));
-    left: max(18px, env(safe-area-inset-left));
-    right: max(18px, env(safe-area-inset-right));
+  .hero-header{
+    top:max(16px, env(safe-area-inset-top));
+    left:max(18px, env(safe-area-inset-left));
+    right:max(18px, env(safe-area-inset-right));
   }
 
-  .hero-brand {
-    gap: 10px;
+  .hero-brand{
+    gap:10px;
   }
 
-  .hero-brand span {
-    font-size: 10px;
-    letter-spacing: 0.22em;
+  .hero-brand span{
+    font-size:10px;
+    letter-spacing:.22em;
   }
 
   .hero-copy,
-  .hero-footer {
-    display: none;
+  .hero-footer{
+    display:none;
   }
 }
 
 /* =========================================================
-   LANDSCAPE
+   LANDSCAPE (Desktop + iPad ngang + Phone ngang)
    ========================================================= */
 
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape){
 
-  .hero-menu {
-    display: none;
+  .hero-menu{
+    display:none;
   }
 
-  .hero-nav {
-    display: flex;
+  .hero-nav{
+    display:flex;
   }
 
-  .hero-lang {
-    display: block;
+  .hero-lang{
+    display:block;
   }
 
-  .hero-copy {
-    display: block;
+  .hero-copy{
+    display:block;
   }
 
-  .hero-footer {
-    display: flex;
+  .hero-footer{
+    display:flex;
   }
 }
 
@@ -302,45 +308,192 @@ main {
    ========================================================= */
 
 .hero-screen > span,
-.hero-screen img {
-  width: 100% !important;
-  height: 100% !important;
+.hero-screen img{
+  width:100% !important;
+  height:100% !important;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
+img{
+  display:block;
+  max-width:100%;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none;
 }
 
-picture {
-  display: block;
+picture{
+  display:block;
 }
 
 /* =========================================================
-   SAFARI / IOS FIX
+   SMOKE LAYER V1
    ========================================================= */
 
-@supports (-webkit-touch-callout: none) {
+.smoke-layer{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:3;
+}
+
+.smoke{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:.12;
+  mix-blend-mode:screen;
+
+  background:radial-gradient(
+    circle,
+    rgba(255,255,255,.9) 0%,
+    rgba(255,255,255,.25) 45%,
+    rgba(255,255,255,0) 75%
+  );
+
+  animation:smokeFloat linear infinite;
+}
+
+.smoke-1{
+  width:420px;
+  height:420px;
+  left:-120px;
+  bottom:-100px;
+  animation-duration:34s;
+}
+
+.smoke-2{
+  width:360px;
+  height:360px;
+  right:-100px;
+  bottom:20px;
+  animation-duration:28s;
+  animation-delay:-8s;
+}
+
+.smoke-3{
+  width:520px;
+  height:520px;
+  left:28%;
+  bottom:-180px;
+  animation-duration:42s;
+  animation-delay:-18s;
+}
+
+.smoke-4{
+  width:260px;
+  height:260px;
+  left:60%;
+  bottom:15%;
+  animation-duration:26s;
+  animation-delay:-10s;
+}
+
+.smoke-5{
+  width:320px;
+  height:320px;
+  right:25%;
+  bottom:-120px;
+  animation-duration:38s;
+  animation-delay:-20s;
+}
+
+.smoke-6{
+  width:260px;
+  height:260px;
+  left:8%;
+  bottom:35%;
+  animation-duration:30s;
+  animation-delay:-14s;
+}
+
+@keyframes smokeFloat{
+
+  0%{
+    transform:translate3d(0,90px,0) scale(1) rotate(0deg);
+    opacity:0;
+  }
+
+  15%{
+    opacity:.08;
+  }
+
+  50%{
+    transform:translate3d(30px,-140px,0) scale(1.25) rotate(10deg);
+    opacity:.14;
+  }
+
+  100%{
+    transform:translate3d(-40px,-320px,0) scale(1.45) rotate(-8deg);
+    opacity:0;
+  }
+}
+
+/* Tablet */
+
+@media (max-width:1024px){
+
+  .smoke{
+    filter:blur(70px);
+    opacity:.10;
+  }
+}
+
+/* Mobile */
+
+@media (max-width:767px){
+
+  .smoke{
+    filter:blur(55px);
+    opacity:.08;
+  }
+
+  .smoke-1,
+  .smoke-3,
+  .smoke-5{
+    width:260px;
+    height:260px;
+  }
+
+  .smoke-2,
+  .smoke-4,
+  .smoke-6{
+    width:180px;
+    height:180px;
+  }
+}
+
+/* Reduce Motion */
+
+@media (prefers-reduced-motion: reduce){
+  .smoke{
+    animation:none;
+    opacity:.05;
+  }
+}
+
+/* =========================================================
+   SAFARI / IOS PRODUCTION FIX
+   ========================================================= */
+
+@supports (-webkit-touch-callout:none){
 
   html,
   body,
   main,
-  .hero-screen {
-    height: 100svh;
-    min-height: 100svh;
+  .hero-screen{
+    height:100svh;
+    min-height:100svh;
   }
 
-  body {
-    position: fixed;
-    inset: 0;
-    width: 100%;
+  body{
+    position:fixed;
+    inset:0;
+    width:100%;
   }
 
-  main {
-    position: fixed;
-    inset: 0;
+  main{
+    position:fixed;
+    inset:0;
   }
 }
