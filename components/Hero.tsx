@@ -1,4 +1,4 @@
-{"use client";
+"use client";
 
 import HeroDesktop from "./HeroDesktop";
 import HeroTablet from "./HeroTablet";
@@ -7,18 +7,20 @@ import HeroMobile from "./HeroMobile";
 export default function Hero() {
   return (
     <>
-      <div className="hidden lg:block">
+      {/* Desktop từ 1280px trở lên */}
+      <div className="hidden xl:block">
         <HeroDesktop />
       </div>
 
-      <div className="hidden md:block lg:hidden">
+      {/* Tablet từ 768 đến 1279px */}
+      <div className="hidden md:block xl:hidden">
         <HeroTablet />
       </div>
 
+      {/* Mobile dưới 768px */}
       <div className="block md:hidden">
         <HeroMobile />
       </div>
     </>
   );
 }
-"}
