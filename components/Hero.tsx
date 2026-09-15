@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import SmokeLayer from "@/components/SmokeLayer";
+import SmokeLayer from "./SmokeLayer";
 
 export default function Hero() {
   const [src, setSrc] = useState("/hero-108.jpg");
