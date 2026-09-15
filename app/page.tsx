@@ -1,42 +1,11 @@
-import Image from "next/image";
+import Intro from "@/components/Intro";
+import Hero from "@/components/Hero";
 
-export default function Page() {
+export default function Home() {
   return (
-    <main className="bg-black overflow-hidden">
-
-      {/* ================= DESKTOP / LANDSCAPE ================= */}
-      <section className="hidden xl:block relative h-screen w-screen">
-        <Image
-          src="/hero-108.jpg"
-          alt="108 Art Collective"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-      </section>
-
-      {/* ================= TABLET PORTRAIT ================= */}
-      <section className="hidden md:block xl:hidden relative w-screen h-screen">
-        <Image
-          src="/hero-108-tablet.png"
-          alt="108 Tablet Portrait"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-      </section>
-
-      {/* ================= MOBILE PORTRAIT ================= */}
-      <section className="block md:hidden relative w-screen h-screen">
-        <Image
-          src="/hero-108-mobile.png"
-          alt="108 Mobile Portrait"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-      </section>
-
-    </main>
+    <>
+      <Intro />
+      <Hero />
+    </>
   );
 }
