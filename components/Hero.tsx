@@ -1,42 +1,46 @@
 {"use client";
 
-import Image from \"next/image\";
-import { useEffect, useState } from \"react\";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
-  const [isPortrait, setIsPortrait] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
+  const [heroSrc, setHeroSrc] = useState("/hero-108.jpg");
 
   useEffect(() => {
-    const update = () => {
-      const portrait = window.matchMedia(\"(orientation: portrait)\").matches;
-      setIsPortrait(portrait);
+    const updateHero = () => {
+      const portrait = window.matchMedia("(orientation: portrait)").matches;
+      const width = window.innerWidth;
 
-      // iPad/tablet: cạnh nhỏ >=768 và <=1366
-      const shortest = Math.min(window.innerWidth, window.innerHeight);
-      setIsTablet(shortest >= 768 && shortest <= 1366);
+      if (!portrait) {
+        setHeroSrc("/hero-108.jpg");
+      } else if (width >= 768) {
+        setHeroSrc("/hero-108-tablet.png");
+      } else {
+        setHeroSrc("/hero-108-mobile.png");
+      }
     };
 
-    update();
-    window.addEventListener(\"resize\", update);
-    return () => window.removeEventListener(\"resize\", update);
+    updateHero();
+
+    window.addEventListener("resize", updateHero);
+    window.addEventListener("orientationchange", updateHero);
+
+    return () => {
+      window.removeEventListener("resize", updateHero);
+      window.removeEventListener("orientationchange", updateHero);
+    };
   }, []);
 
-  const heroSrc = !isPortrait
-    ? \"/hero-108.jpg\"                  // Desktop + iPad ngang
-    : isTablet
-    ? \"/hero-108-tablet.png\"           // iPad dựng dọc
-    : \"/hero-108-mobile.png\";          // iPhone dựng dọc
-
   return (
-    <section className=\"relative h-screen w-screen overflow-hidden bg-black\">
+    <section className="relative h-screen w-screen overflow-hidden bg-black">
       <Image
+        key={heroSrc}
         src={heroSrc}
-        alt=\"108 Art Collective\"
+        alt="108 Art Collective"
         fill
         priority
-        sizes=\"100vw\"
-        className=\"object-cover object-center\"
+        sizes="100vw"
+        className="object-cover object-center"
       />
     </section>
   );
