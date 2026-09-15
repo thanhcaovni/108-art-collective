@@ -1,14 +1,15 @@
-{
-  "name": "108-art-collective",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "15.5.6",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
-  }
+import Image from "next/image";
+
+export default function Page() {
+  return (
+    <main className="relative h-screen w-screen overflow-hidden bg-black">
+      <Image
+        src="/hero-108.jpg"
+        alt="108 Art Collective"
+        fill
+        priority
+        className="object-cover object-center"
+      />
+    </main>
+  );
 }
