@@ -241,52 +241,7 @@ main {
     display: none;
   }
 }
-/* =========================================================
-   HERO RESPONSIVE (108 Homepage V2)
-   Thêm cuối globals.css - không xóa gì phía trên.
-   ========================================================= */
 
-.hero-desktop,
-.hero-tablet,
-.hero-mobile {
-  position: absolute;
-  inset: 0;
-}
-
-.hero-tablet,
-.hero-mobile {
-  display: none;
-}
-
-/* Desktop + iPad Landscape */
-@media screen and (orientation: landscape) {
-  .hero-desktop {
-    display: block;
-  }
-}
-
-/* iPad Portrait */
-@media screen and (orientation: portrait) and (min-width: 768px) {
-  .hero-desktop {
-    display: none;
-  }
-
-  .hero-tablet {
-    display: block;
-  }
-}
-
-/* iPhone Portrait */
-@media screen and (orientation: portrait) and (max-width: 767px) {
-  .hero-desktop,
-  .hero-tablet {
-    display: none;
-  }
-
-  .hero-mobile {
-    display: block;
-  }
-}
 /* =========================================================
    LANDSCAPE
    ========================================================= */
