@@ -326,7 +326,7 @@ picture{
 }
 
 /* =========================================================
-   SMOKE LAYER V1
+   SMOKE LAYER V4 — 108 ARCHIVE
    ========================================================= */
 
 .smoke-layer{
@@ -337,138 +337,210 @@ picture{
   z-index:3;
 }
 
+/* ===== KHÓI ===== */
+
 .smoke{
   position:absolute;
   border-radius:50%;
-  filter:blur(90px);
-  opacity:.12;
+  background:
+    radial-gradient(circle,
+      rgba(190,190,190,.28) 0%,
+      rgba(90,90,90,.12) 40%,
+      rgba(0,0,0,0) 72%);
   mix-blend-mode:screen;
-
-  background:radial-gradient(
-    circle,
-    rgba(255,255,255,.9) 0%,
-    rgba(255,255,255,.25) 45%,
-    rgba(255,255,255,0) 75%
-  );
-
+  filter:blur(70px);
+  opacity:.22;
   animation:smokeFloat linear infinite;
 }
 
 .smoke-1{
-  width:420px;
-  height:420px;
+  width:460px;
+  height:460px;
   left:-120px;
-  bottom:-100px;
+  bottom:-140px;
   animation-duration:34s;
 }
 
 .smoke-2{
-  width:360px;
-  height:360px;
-  right:-100px;
-  bottom:20px;
-  animation-duration:28s;
-  animation-delay:-8s;
+  width:520px;
+  height:520px;
+  right:-140px;
+  bottom:-100px;
+  animation-duration:40s;
+  animation-delay:-10s;
 }
 
 .smoke-3{
-  width:520px;
-  height:520px;
-  left:28%;
-  bottom:-180px;
-  animation-duration:42s;
+  width:640px;
+  height:640px;
+  left:25%;
+  bottom:-220px;
+  animation-duration:48s;
   animation-delay:-18s;
 }
 
 .smoke-4{
-  width:260px;
-  height:260px;
-  left:60%;
-  bottom:15%;
+  width:340px;
+  height:340px;
+  left:58%;
+  bottom:10%;
   animation-duration:26s;
+  animation-delay:-8s;
+}
+
+/* ===== SƯƠNG DƯỚI CHÂN ===== */
+
+.smoke-ground{
+  width:120%;
+  height:220px;
+  left:-10%;
+  bottom:-40px;
+  border-radius:100%;
+  filter:blur(55px);
+  opacity:.24;
+  mix-blend-mode:screen;
+
+  background:
+    radial-gradient(ellipse at center,
+      rgba(180,180,180,.20),
+      rgba(60,60,60,.08),
+      transparent 75%);
+
+  animation:groundFog 22s ease-in-out infinite;
+}
+
+.smoke-ground-2{
   animation-delay:-10s;
+  opacity:.18;
 }
 
-.smoke-5{
-  width:320px;
-  height:320px;
-  right:25%;
-  bottom:-120px;
-  animation-duration:38s;
-  animation-delay:-20s;
+/* ===== TRO ĐỎ ===== */
+
+.ember{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#B31122;
+  box-shadow:0 0 10px rgba(179,17,34,.8);
+  opacity:0;
+  animation:emberFloat linear infinite;
 }
 
-.smoke-6{
-  width:260px;
-  height:260px;
-  left:8%;
-  bottom:35%;
-  animation-duration:30s;
-  animation-delay:-14s;
-}
+/* Random vị trí */
+
+.ember-1{left:12%;bottom:-10px;animation-duration:10s;}
+.ember-2{left:18%;bottom:-20px;animation-duration:14s;animation-delay:-2s;}
+.ember-3{left:28%;bottom:-15px;animation-duration:12s;}
+.ember-4{left:36%;bottom:-5px;animation-duration:16s;}
+.ember-5{left:45%;bottom:-12px;animation-duration:11s;animation-delay:-6s;}
+.ember-6{left:54%;bottom:-20px;animation-duration:15s;}
+.ember-7{left:60%;bottom:-8px;animation-duration:13s;}
+.ember-8{left:67%;bottom:-15px;animation-duration:17s;}
+.ember-9{left:74%;bottom:-18px;animation-duration:12s;}
+.ember-10{left:82%;bottom:-8px;animation-duration:14s;}
+.ember-11{left:88%;bottom:-12px;animation-duration:18s;}
+.ember-12{left:52%;bottom:-25px;animation-duration:20s;}
+.ember-13{left:30%;bottom:-30px;animation-duration:18s;}
+.ember-14{left:70%;bottom:-22px;animation-duration:16s;}
+
+/* ===== ANIMATION ===== */
 
 @keyframes smokeFloat{
 
   0%{
-    transform:translate3d(0,90px,0) scale(1) rotate(0deg);
+    transform:translateY(120px) translateX(0) scale(1);
     opacity:0;
   }
 
-  15%{
-    opacity:.08;
-  }
-
-  50%{
-    transform:translate3d(30px,-140px,0) scale(1.25) rotate(10deg);
+  20%{
     opacity:.14;
   }
 
+  60%{
+    transform:translateY(-120px) translateX(35px) scale(1.25);
+    opacity:.24;
+  }
+
   100%{
-    transform:translate3d(-40px,-320px,0) scale(1.45) rotate(-8deg);
+    transform:translateY(-340px) translateX(-40px) scale(1.45);
     opacity:0;
   }
 }
 
-/* Tablet */
+@keyframes groundFog{
+
+  0%,100%{
+    transform:translateX(-3%) scaleX(1);
+  }
+
+  50%{
+    transform:translateX(4%) scaleX(1.08);
+  }
+}
+
+@keyframes emberFloat{
+
+  0%{
+    transform:translateY(0) scale(.6);
+    opacity:0;
+  }
+
+  20%{
+    opacity:.7;
+  }
+
+  70%{
+    opacity:.35;
+  }
+
+  100%{
+    transform:translateY(-240px) translateX(-18px) scale(1.4);
+    opacity:0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width:1024px){
 
   .smoke{
-    filter:blur(70px);
-    opacity:.10;
+    filter:blur(60px);
+    opacity:.18;
+  }
+
+  .smoke-ground{
+    height:170px;
   }
 }
-
-/* Mobile */
 
 @media (max-width:767px){
 
   .smoke{
-    filter:blur(55px);
-    opacity:.08;
+    filter:blur(45px);
+    opacity:.14;
   }
 
-  .smoke-1,
-  .smoke-3,
-  .smoke-5{
-    width:260px;
-    height:260px;
+  .smoke-ground{
+    height:130px;
+    opacity:.14;
   }
 
-  .smoke-2,
-  .smoke-4,
-  .smoke-6{
-    width:180px;
-    height:180px;
+  .ember{
+    width:2px;
+    height:2px;
   }
 }
 
-/* Reduce Motion */
+@media (prefers-reduced-motion:reduce){
 
-@media (prefers-reduced-motion: reduce){
-  .smoke{
+  .smoke,
+  .smoke-ground,
+  .ember{
     animation:none;
-    opacity:.05;
+    opacity:.06;
   }
 }
 
