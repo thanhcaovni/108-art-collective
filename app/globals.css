@@ -30,3 +30,54 @@ main{position:relative;width:100%;height:var(--vh);min-height:var(--vh);overflow
 .smoke-ground-2{animation-delay:-10s;opacity:.18;}
 
 .ember{position:absolute;width:3px;height:3px;border-radius:50%;background:#B31122;box-shadow:0 0 10px rgba(179,17,34,.8);opacity:0;animation:emberFloat linear infinite;}
+/* =========================================================
+   HERO V6 PATCH
+   ========================================================= */
+
+.hero-image-wrap{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  overflow:hidden;
+}
+
+.hero-image-wrap.loaded{
+  opacity:1;
+}
+
+.hero-image{
+  width:100%!important;
+  height:100%!important;
+
+  object-fit:cover!important;
+  object-position:center center!important;
+
+  transform:none!important;
+  scale:1!important;
+}
+
+.hero-screen img{
+  z-index:1!important;
+}
+
+.smoke-layer{
+  z-index:5!important;
+}
+
+.hero-vignette{
+  z-index:6!important;
+}
+
+/* Safari First Paint Fix */
+
+@supports(-webkit-touch-callout:none){
+
+  .hero-screen{
+    height:100svh!important;
+    min-height:100svh!important;
+  }
+
+  .hero-image{
+    object-position:center center!important;
+  }
+}
