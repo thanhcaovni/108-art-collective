@@ -6,6 +6,7 @@ import SmokeLayer from "./SmokeLayer";
 
 export default function Hero() {
   const [src, setSrc] = useState("/hero-108.jpg");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const updateHero = () => {
@@ -19,6 +20,8 @@ export default function Hero() {
       } else {
         setSrc("/hero-108.jpg");
       }
+
+      requestAnimationFrame(() => setReady(true));
     };
 
     updateHero();
@@ -34,16 +37,18 @@ export default function Hero() {
 
   return (
     <section className="hero-screen">
-      <Image
-        key={src}
-        src={src}
-        alt="108 Art Collective"
-        fill
-        priority
-        quality={100}
-        sizes="100vw"
-        className="hero-image"
-      />
+      <div className={`hero-image-wrap ${ready ? "loaded" : ""}`}>
+        <Image
+          key={src}
+          src={src}
+          alt="108 Art Collective"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          className="hero-image"
+        />
+      </div>
 
       <SmokeLayer />
 
