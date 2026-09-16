@@ -6,38 +6,42 @@ import SmokeLayer from "./SmokeLayer";
 
 export default function Hero() {
   const [src, setSrc] = useState("/hero-108.jpg");
-  const [ready, setReady] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const updateHero = () => {
-      const portrait = window.matchMedia("(orientation: portrait)").matches;
-      const mobile = window.innerWidth < 768;
+    const media = window.matchMedia("(orientation: portrait)");
 
-      if (portrait && mobile) {
-        setSrc("/hero-108-mobile.png");
-      } else if (portrait) {
-        setSrc("/hero-108-tablet.png");
+    const updateHero = () => {
+      const portrait = media.matches;
+
+      if (portrait) {
+        setSrc(
+          window.innerWidth < 768
+            ? "/hero-108-mobile.png"
+            : "/hero-108-tablet.png"
+        );
       } else {
         setSrc("/hero-108.jpg");
       }
 
-      requestAnimationFrame(() => setReady(true));
+      // Fix Safari/iPhone lần render đầu bị zoom
+      requestAnimationFrame(() => setMounted(true));
     };
 
     updateHero();
 
+    media.addEventListener("change", updateHero);
     window.addEventListener("resize", updateHero);
-    window.addEventListener("orientationchange", updateHero);
 
     return () => {
+      media.removeEventListener("change", updateHero);
       window.removeEventListener("resize", updateHero);
-      window.removeEventListener("orientationchange", updateHero);
     };
   }, []);
 
   return (
     <section className="hero-screen">
-      <div className={`hero-image-wrap ${ready ? "loaded" : ""}`}>
+      <div className={`hero-image-wrap ${mounted ? "loaded" : ""}`}>
         <Image
           key={src}
           src={src}
@@ -50,8 +54,10 @@ export default function Hero() {
         />
       </div>
 
+      {/* Khói luôn nằm trên ảnh */}
       <SmokeLayer />
 
+      {/* Overlay luôn nằm trên khói */}
       <div className="hero-vignette" />
     </section>
   );
