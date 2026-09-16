@@ -404,7 +404,137 @@ main{
   .hero-screen{
     height:100svh;
     min-height:100svh;
+  }/* =========================================================
+   NAVBAR V1 — 108 ART COLLECTIVE
+   ========================================================= */
+
+.navbar{
+  position:absolute;
+  top:max(20px, env(safe-area-inset-top));
+  left:max(20px, env(safe-area-inset-left));
+  right:max(20px, env(safe-area-inset-right));
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  z-index:30;
+}
+
+.navbar-logo{
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:#fff;
+}
+
+.navbar-logo span{
+  font-family:"Cinzel",serif;
+  font-size:22px;
+  letter-spacing:.28em;
+}
+
+.navbar-logo small{
+  font-family:"Cinzel",serif;
+  font-size:9px;
+  letter-spacing:.30em;
+  opacity:.7;
+}
+
+.navbar-menu{
+  display:flex;
+  gap:32px;
+  justify-content:center;
+  flex:1;
+}
+
+.navbar-menu a{
+  color:#fff;
+  text-decoration:none;
+  font-family:"Cinzel",serif;
+  font-size:11px;
+  letter-spacing:.24em;
+  opacity:.82;
+  white-space:nowrap;
+  transition:.25s;
+}
+
+.navbar-menu a:hover{
+  color:#B31122;
+  opacity:1;
+}
+
+.navbar-right{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.lang{
+  background:none;
+  border:none;
+  color:#fff;
+  opacity:.55;
+  font-family:"Cinzel",serif;
+  font-size:11px;
+  letter-spacing:.18em;
+}
+
+.lang.active{
+  color:#B31122;
+  opacity:1;
+}
+
+/* iPad dọc */
+
+@media (orientation:portrait) and (min-width:768px){
+
+  .navbar-menu{
+    gap:20px;
   }
+
+  .navbar-menu a{
+    font-size:10px;
+    letter-spacing:.16em;
+  }
+
+  .navbar-logo span{
+    font-size:24px;
+  }
+}
+
+/* Mobile dọc */
+
+@media (orientation:portrait) and (max-width:767px){
+
+  .navbar{
+    top:max(14px, env(safe-area-inset-top));
+    left:max(14px, env(safe-area-inset-left));
+    right:max(14px, env(safe-area-inset-right));
+  }
+
+  .navbar-logo span{
+    font-size:18px;
+    letter-spacing:.16em;
+  }
+
+  .navbar-logo small{
+    display:none;
+  }
+
+  .navbar-menu{
+    gap:10px;
+  }
+
+  .navbar-menu a{
+    font-size:8px;
+    letter-spacing:.06em;
+  }
+
+  .lang{
+    font-size:8px;
+  }
+}
 
   body{
     position:fixed;
