@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SmokeLayer from "./SmokeLayer";
+import Navbar from "./Navbar";
 
 export default function Hero() {
   const [src, setSrc] = useState("/hero-108.jpg");
-  const [mounted, setMounted] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(orientation: portrait)");
@@ -23,9 +24,6 @@ export default function Hero() {
       } else {
         setSrc("/hero-108.jpg");
       }
-
-      // Fix Safari/iPhone lần render đầu bị zoom
-      requestAnimationFrame(() => setMounted(true));
     };
 
     updateHero();
@@ -41,7 +39,8 @@ export default function Hero() {
 
   return (
     <section className="hero-screen">
-      <div className={`hero-image-wrap ${mounted ? "loaded" : ""}`}>
+      {/* Background Hero */}
+      <div className={`hero-image-wrap ${loaded ? "loaded" : ""}`}>
         <Image
           key={src}
           src={src}
@@ -51,13 +50,17 @@ export default function Hero() {
           quality={100}
           sizes="100vw"
           className="hero-image"
+          onLoad={() => setLoaded(true)}
         />
       </div>
 
-      {/* Khói luôn nằm trên ảnh */}
+      {/* Smoke */}
       <SmokeLayer />
 
-      {/* Overlay luôn nằm trên khói */}
+      {/* Top Navigation */}
+      <Navbar />
+
+      {/* Overlay */}
       <div className="hero-vignette" />
     </section>
   );
